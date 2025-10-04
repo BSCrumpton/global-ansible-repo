@@ -1,0 +1,16 @@
+- name: ensure postgres is allowed in the firewall on the public zone
+  ansible.builtin.lineinfile:
+    path: /etc/firewalld/zones/public.xml
+    insertbefore: '</zone>'
+    line: '  <service name="postgresql"/>'
+    when:
+    - __postgresql_public.stat.exists
+    notify: restart firewalld
+- name: ensure postgres is allowed in the firewall on the internal zone
+  ansible.builtin.lineinfile:
+    path: /etc/firewalld/zones/internal.xml
+    insertbefore: '</zone>'
+    line: '  <service name="postgresql"/>'
+    when:
+    - __postgresql_internal.stat.exists
+    notify: restart firewalld
