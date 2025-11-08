@@ -1,0 +1,11 @@
+- gather_facts:
+  when: ansible_facts.distribution_major.version is undefined
+- name: Include vars1
+  ansible.builtin.include_vars:
+    file: ./vars/sensitive_data.yml
+- name: Include vars2
+  ansible.builtin.include_vars:
+    file: ./vars/sensitive_data.yml
+- name: Import the ipaserver role
+  ansible.builtin.import_role:
+    name: ipaserver

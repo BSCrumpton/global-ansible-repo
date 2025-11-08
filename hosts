@@ -1,2 +1,8 @@
 [dbase]
 dbase01
+
+[ipaclients]
+rhel8-client.cm.cluster
+
+[ipaserver]
+idm.cm.cluster

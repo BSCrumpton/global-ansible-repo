@@ -1,0 +1,10 @@
+---
+- name: Playbook to configure IPA server
+  hosts: ipaserver
+  vars_files:
+  - ./vars/sensitive_data.yml
+  - ./vars/non-sensitive_data.yml
+
+  roles:
+  - role: ipaserver
+    state: present

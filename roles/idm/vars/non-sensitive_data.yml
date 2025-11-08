@@ -1,0 +1,4 @@
+ipaserver_domain: "cm.cluster"
+ipaserver_realm: "CM.CLUSTER"
+ipaserver_setup_dns: true
+ipaserver_auto_forwarders: true
