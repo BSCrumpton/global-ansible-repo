@@ -1,10 +1,14 @@
 ---
 # This Playbook would deploy the whole mongodb cluster with replication and sharding.
 
-- hosts: all
-  roles:
-  - role: common
+#- hosts: all
+#  roles:
+#  - role: common
 
 - hosts: dbase
   roles:
   - role: dbase_server
+
+- hosts: ipaserver
+  roles:
+  - role: idm

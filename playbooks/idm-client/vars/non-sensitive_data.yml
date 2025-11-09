@@ -1,0 +1,4 @@
+ipaclient_domain: "cm.cluster"
+ipaclient_realm: "CM.CLUSTER"
+ipaclient_mkhomedir: true
+ipaclient_servers: idm.cm.cluster

@@ -14,3 +14,7 @@ To run a single playbook, you would do something like the following:
 ```bash
 ansible-playbook -i hosts -C -D playbooks/PLAYBOOK/main.yml
 ```
+Finally, to run the entire prod_site.yml, you would do the following
+```bash
+ansible-playbook -l HOSTLIST -i hosts -C -D prod_site.yml
+```
