@@ -1,0 +1,5 @@
+[fastx4]
+name=Repo for fastx4
+metadata_expire=-1
+gpgcheck=0
+baseurl=file:///repos/fastx4

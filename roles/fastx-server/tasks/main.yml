@@ -1,0 +1,33 @@
+- gather_facts:
+  when: ansible_facts.distribution_major.version is undefined
+- name: Copy fastx4 repo file
+  ansible.builtin.copy:
+    src: fastx.repo
+    dest: /etc/yum.repos.d/fastx.repo
+    owner: root
+    group: root
+    mode: '0755'
+- name: Copy fastx4 service file
+  ansible.builtin.copy:
+    src: fastx.xml
+    dest: /etc/firewalld/services/fastx.xml
+    owner: root
+    group: root
+    mode: '0444'
+- ansible.builtin.dnf:
+  name:
+  - fastx4-server
+  statue: present
+- name: Copy fastx4 starter permissions file
+  ansible.builtin.copy:
+    src: permissions.ini
+    dest: /etc/fastx/permissions.ini
+    owner: 972
+    group: 972
+    mode: '0600'
+- name: ensure postgres is allowed in the firewall on the public zone
+  ansible.builtin.lineinfile:
+    path: /etc/firewalld/zones/public.xml
+    insertbefore: '</zone>'
+    line: '  <service name="fastx"/>'
+    notify: restart firewalld
